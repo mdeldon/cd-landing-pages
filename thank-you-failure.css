@@ -1,0 +1,624 @@
+.fs-16      { font-size: 16px; }
+.fs-18      { font-size: 18px; }
+.fs-20      { font-size: 20px; }
+.fs-24      { font-size: 24px; }
+.fs-md        { font-size: clamp(1.375rem, 1.3355rem + 0.1754vw, 1.5rem); }
+.fs-xxl       { font-size: clamp(3.125rem, 2.1382rem + 4.386vw, 6.25rem); }
+.fs-xl        { font-size: clamp(2.1875rem, 1.7928rem + 1.7544vw, 3.4375rem); }
+.fs-lg        { font-size: clamp(1.875rem, 1.5789rem + 1.3158vw, 2.8125rem); }
+.fs-lg-alt    { font-size: clamp(1.75rem, 1.6118rem + 0.614vw, 2.1875rem); }
+.fs-sm        { font-size: clamp(1.5625rem, 1.4638rem + 0.4386vw, 1.875rem); }
+.fs-xl-alt    { font-size: clamp(2.0625rem, 2.023rem + 0.1754vw, 2.1875rem); }
+
+.fw-700{
+    font-weight: 700;
+}
+.lh-28px      { line-height: 28px; }
+.lh-44px      { line-height: 44px; }
+.lh-md        { line-height: clamp(2.5rem, 2.4211rem + 0.3509vw, 2.75rem); }
+.lh-xxl       { line-height: clamp(3.75rem, 2.7632rem + 4.386vw, 6.875rem); }
+.lh-xl        { line-height: clamp(2.5rem, 2.2039rem + 1.3158vw, 3.4375rem); }
+.lh-lg        { line-height: clamp(1.875rem, 1.5789rem + 1.3158vw, 2.8125rem); }
+.lh-lg-alt    { line-height: clamp(2.0625rem, 1.9243rem + 0.614vw, 2.5rem); }
+.lh-sm        { line-height: clamp(2.125rem, 1.9276rem + 0.8772vw, 2.75rem); }
+
+.text-light-black{
+    color: #434343 !important;
+}
+.text-body {
+    font-size: clamp(1.375rem, 1.3355rem + 0.1754vw, 1.5rem);
+    line-height: clamp(2.5rem, 2.4211rem + 0.3509vw, 2.75rem);
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+}
+
+.text-accent {
+    font-size: clamp(1.375rem, 1.3355rem + 0.1754vw, 1.5rem);
+    line-height: clamp(2.5rem, 2.4211rem + 0.3509vw, 2.75rem);
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+}
+
+.text-primary {
+    font-size: 18px;
+    line-height: 28px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+}
+
+.text-secondary {
+    font-size: 24px;
+    line-height: 44px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 900;
+}
+
+.heading-xxl {
+    font-size: clamp(3.125rem, 2.1382rem + 4.386vw, 6.25rem);
+    line-height: clamp(3.75rem, 2.7632rem + 4.386vw, 6.875rem);
+    font-family: "Georgia", serif;
+    font-weight: 400;
+}
+
+.heading-xl,.heading-xl-bolder {
+    font-size: clamp(2.1875rem, 1.7928rem + 1.7544vw, 3.4375rem);
+    line-height: clamp(2.5rem, 2.2039rem + 1.3158vw, 3.4375rem);
+    font-family: "Georgia", serif;
+    font-weight: 400;
+}
+.heading-xl-bolder{
+    font-weight: 700;
+}
+.heading-lg {
+    font-size: clamp(1.875rem, 1.5789rem + 1.3158vw, 2.8125rem);
+    line-height: clamp(1.875rem, 1.5789rem + 1.3158vw, 2.8125rem);
+    font-family: "Georgia", serif;
+    font-weight: 400;
+}
+
+.heading-md {
+    font-size: clamp(1.75rem, 1.6118rem + 0.614vw, 2.1875rem);
+    line-height: clamp(2.0625rem, 1.9243rem + 0.614vw, 2.5rem);
+    font-family: "Georgia", serif;
+    font-weight: 400;
+}
+
+.heading-bold-sm {
+    font-size: clamp(1.5625rem, 1.4638rem + 0.4386vw, 1.875rem);
+    line-height: clamp(2.125rem, 1.9276rem + 0.8772vw, 2.75rem);
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+}
+
+.heading-bold-md {
+    font-size: clamp(2.0625rem, 2.023rem + 0.1754vw, 2.1875rem) !important;
+    line-height: clamp(2.5rem, 2.4211rem + 0.3509vw, 2.75rem) !important;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600 !important;
+}
+.heading-bold-lg {
+    font-size: clamp(2.0625rem, 2.023rem + 0.1754vw, 2.1875rem);
+    line-height: clamp(2.5rem, 2.4211rem + 0.3509vw, 2.75rem);
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+}
+
+
+.container {
+    max-width: 100%;
+}
+.cd-container-row,.cd-container-col{
+    max-width: 100%;
+    align-content: initial;
+    align-items: initial;
+    align-self: auto;
+    flex-basis: auto;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: row;
+    text-align: center;
+    padding: 50px 0;
+    gap: 40px;
+}
+.cd-container-col{
+    flex-direction: column;
+    align-items: center;
+}
+@media (min-width: 768px) {
+    .container {
+        max-width: 1270px !important;
+    }
+}
+.header-container{
+    gap: 40px;
+    padding: 50px 0 !important;
+}
+.header-container .heading-text-2{
+    margin-bottom: 20px;
+}
+.header-image-container{
+    padding: 20px;
+    gap: 20px;
+}
+.container-fluid{
+    padding: 0 20px !important;
+}
+.horizontal-divider{
+    height: 1px;
+    width: 100%;
+    background-color: #00000080;
+}
+.custom-cta-btn{
+    background-color: #F4782A;
+    font-family: "Montserrat", Sans-serif, serif;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 24px;
+    color: white;
+    border-style: solid;
+    border-width: 3px;
+    border-color: #F4782A;
+    border-radius: 50px;
+    padding: 20px;
+    box-shadow: none;
+}
+.custom-cta-btn:hover{
+   color: #F4782A;
+    background-color: white;
+    transition: all  .3s;
+}
+.about-container{
+    padding: 50px 0;
+    color: black !important;
+}
+.about-container-left{
+    width: 60%;
+    gap: 20px;
+}
+.about-container-right{
+    width: 40%;
+    padding-left: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+.about-section-list{
+    list-style: disc;
+    margin: 0 0 27px 54px;
+    padding-left: 0;
+}
+
+.why-choose-container{
+    display: flex;
+    padding: 50px 0;
+}
+.why-choose-left{
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.why-choose-left img{
+    width: 100%;
+    /*height: 100%;*/
+    object-fit: cover;
+    object-position: center center;
+}
+.why-choose-right{
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+    /*padding-left: 10%;*/
+    gap:  20px;
+    justify-content: center;
+    /*align-items: center;*/
+}
+.why-choose-right-1{
+    padding-left: 10%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+.why-choose-right-1 .why-choose-desc{
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.5em;
+    margin-bottom: 1.75em;
+}
+.why-choose-right-2{
+    background-color: white;
+    background-image: url(./assets/img/border-image.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding-left: 10%;
+}
+.why-choose-right-2 span{
+    font-size: 71px;
+    font-weight: 700;
+    line-height: 107px;
+    color: #fb7928;
+}
+.why-choose-right-2 .annual-client{
+    font-weight: 500;
+}
+.why-choose-right-2 p{
+    font-size: 19px;
+    font-weight: 400;
+    line-height: 1.5em;
+}
+.monthly-ssdi-benefits,.monthly-ssdi-benefits-mobile{
+    background-image: url(./assets/img/vyjo2p-group.webp);
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.monthly-ssdi-benefits-mobile{
+    display: none;
+    background-image: url(./assets/img/39abfbec-group.webp);
+}
+.monthly-ssdi-benefits-text{
+    width: 65%;
+    padding: 80px 40px 50px 60px;
+}
+.core-values-container{
+    display: flex;
+    flex-direction: column;
+    padding: 80px 20px 130px;
+    gap:  20px;
+}
+.core-values-heading{
+    text-align: center;
+}
+.vector-image-container img{
+    width: 100%;
+    height: 100%;
+}
+.core-values-images{
+    display: flex;
+    gap: 50px;
+    margin-top: -50px;
+}
+
+.core-values-commitment-image,.core-values-integrity-image,.core-values-excellence-image,.core-values-compassion-image{
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    font-weight: 800;
+    line-height: 35px;
+    font-size: 25px;
+    min-height: 379px;
+    color: white;
+    text-align: center;
+    border-radius: 30px 30px 30px 30px;
+    padding: 20px 20px 30px;
+}
+.core-values-commitment-image{
+    background-image: url(./assets/img/1jm6t95-group.webp);
+}
+.core-values-integrity-image{
+    background-image: url(./assets/img/1qwx5g-group.webp);
+}
+.core-values-excellence-image{
+    background-image: url(./assets/img/g4p2w4-group.webp);
+}
+.core-values-compassion-image{
+    background-image: url(./assets/img/13pg7sd-group.webp);
+}
+.testimonials-container{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items:  center;
+    padding-bottom: 80px;
+}
+.testimonials-carousel{
+    color:#0F66B1;
+    max-width: 80%;
+    /*height: 400px;*/
+    /*height: auto;*/
+    border-radius: 20px !important;
+    background-color: white;
+    margin: 0 auto !important;
+}
+.testimonial {
+    text-align: center;
+    display: flex;
+    padding: 30px;
+    flex-direction: column;
+    justify-content: start;
+    height: 100%;
+}
+.testimonial p{
+    margin: 25px 0;
+}
+.testimonials-header{
+    margin-top: -32.5px;
+    background-color: #C8E5FF;
+    width: 95%;
+    text-align: center;
+    border-radius: 5px;
+    padding: 10px;
+}
+.testimonials-title{
+    color: #F4782A;
+    margin-top: 30px;
+    align-self: start;
+}
+.testimonials-carousel-btn{
+    margin: 20px 0 0 0;
+    width: 20px !important;
+    height: 20px !important;
+    background: transparent !important;
+    border: 1px solid white !important;
+    border-radius: 50% !important;
+}
+.carousel-container{
+    margin:30px 20px;
+}
+.carousel-indicators .active {
+    background-color: white !important;
+    opacity: 1;
+    /*outline: 1px solid #f9892a;*/
+}
+.carousel-indicators {
+    position: static;
+    margin-bottom: 0;
+}
+
+.carousel-indicators [data-bs-target] {
+    width: 12px;
+    height: 12px;
+    background-color: transparent;
+    border: 1px solid white;
+    opacity: 1;
+}
+
+.carousel-indicators .active {
+    background-color: white !important;
+}
+
+.accordion-header button{
+    padding: 10px !important;
+}
+.accordion-container {
+    padding: 80px 0 60px 0;
+    position: relative; /* To handle stacking properly */
+    z-index: 1;
+}
+
+.accordion-image-wrapper-container {
+    background-image: url(./assets/img/CD-Logo.png);
+    background-position: top left;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    position: relative;
+    z-index: 1;
+}
+
+.faq-accordion {
+    background: transparent !important;
+    position: relative;
+    z-index: 2;
+}
+
+.accordion-item {
+    margin-bottom: 10px;
+    background: transparent !important;
+    border: none;
+    box-shadow: none;
+}
+
+.accordion-button {
+    background: transparent !important;
+}
+
+.accordion-body {
+    background: transparent !important;
+}
+
+.help-apply-ssdi{
+    padding: 30px 0 80px 0;
+
+}
+.help-apply-ssdi-image-wrapper{
+    background-image: url(./assets/img/b067faf4-group.webp);
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    min-height: 287px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.help-apply-ssdi p{
+    max-width: 70%;
+}
+
+.footer-container{
+    padding: 20px 0 50px 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap:  20px;
+}
+.disclaimer-section{
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    padding:20px;
+}
+.disclaimer-section p{
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.5em;
+    color: black ;
+}
+.privacy-policy-container{
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    /*gap: 50px;*/
+}
+.privacy-policy-container p{
+    margin-bottom: 1.75em;
+    font-size: 18px;
+    line-height: 1.5em;
+    font-weight: 500;
+    color: black;
+}
+.privacy-policy-container p a{
+    color: black;
+}
+.back-to-top-btn {
+    position: fixed;
+    bottom: 140px;
+    right: 17px;
+    background-color: #046bd2;
+    color: white;
+    border: none;
+    width: 37.797px;
+    height: 37.797px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+}
+
+.back-to-top-btn.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+@media (max-width: 1024px) {
+    .core-values-images{
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .core-values-commitment-image,.core-values-integrity-image,.core-values-excellence-image,.core-values-compassion-image{
+        width: 45%;
+    }
+}
+@media (max-width: 921px) {
+    html{
+        font-size: 91.2%;
+    }
+    .custom-cta-btn {
+        padding: 14px 28px;
+    }
+}
+@media (max-width: 767px) {
+    .container {
+        max-width: 100% !important;
+    }
+    .header-container{
+        gap: 30px;
+    }
+    .header-container .heading-text-2{
+        margin-bottom: 0;
+    }
+    .about-container,.why-choose-container{
+        flex-direction: column;
+    }
+    .about-container-left,.about-container-right,.why-choose-left,.why-choose-right {
+        width: 100%;
+    }
+    .why-choose-container{
+        gap: 30px;
+    }
+    .about-container-right{
+        align-items: center;
+        padding-left: 0;
+    }
+    .why-choose-right-1{
+        padding-left: 0;
+        align-items: start;
+    }
+    .monthly-ssdi-benefits{
+        display: none;
+    }
+    .monthly-ssdi-benefits-container{
+        display: flex;
+        justify-content:  center;
+        /*align-items: center;*/
+    }
+    .monthly-ssdi-benefits-mobile{
+        /*display: block;*/
+        max-width: 500px;
+        min-height: 650px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        /*height: 100%;*/
+    }
+    .container{
+        max-width: 767px !important;
+    }
+    .monthly-ssdi-benefits-mobile .monthly-ssdi-benefits-text{
+        width: 100%;
+        text-align: center;
+        padding: 20px 20px 60px 20px;
+    }
+    .monthly-ssdi-benefits-mobile .monthly-ssdi-benefits-text h2{
+        margin-bottom: 0;
+    }
+    .vector-image-container{
+        display: none;
+    }
+    .core-values-images{
+        margin-top: 0;
+        flex-direction: column;
+    }
+    .core-values-commitment-image,.core-values-integrity-image,.core-values-excellence-image,.core-values-compassion-image{
+        width: 100%;
+    }
+    .testimonials-container{
+        gap: 20px;
+    }
+    .testimonials-header{
+        margin-top: -80px;
+        width: 100%;
+    }
+    .testimonials-carousel{
+        max-width: 100%;
+    }
+    .testimonial{
+        padding: 15px;
+    }
+    .carousel-container{
+        margin:20px 10px;
+    }
+}
+
+@media (min-width:768px) and (max-width:1024px) {
+    .back-to-top-btn {
+        right: 16px;
+        bottom: 140px;
+    }
+}
+
+@media (max-width:767px) {
+    .back-to-top-btn {
+        right: 15px;
+        bottom: 75px;
+    }
+}
+@media (max-width: 544px) {
+    .custom-cta-btn {
+        padding: 12px 24px;
+    }
+}

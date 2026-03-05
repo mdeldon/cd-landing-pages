@@ -1,0 +1,713 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+
+    <link rel="icon" href="./assets/img/favicon.ico">
+    <title>SEC - Thank You - DTI - Citizens Disability</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="./thank-you-success.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+        .font-georgia {
+            font-family: Georgia, sans-serif;
+        }
+        .background-color {
+            background-color: #F3F3F3;
+        }
+        /* Responsive adjustments */
+        @media (max-width: 991.98px) {
+            /* Flex columns stack on smaller screens */
+            .flex-column-reverse {
+                flex-direction: column-reverse !important;
+            }
+
+            /* Adjust text sizes for mobile */
+            .h1-mobile {
+                font-size: 1.75rem !important;
+            }
+
+            .h2-mobile {
+                font-size: 1.5rem !important;
+            }
+
+            /* Make images responsive */
+            .img-fluid-mobile {
+                max-width: 100%;
+                height: auto;
+            }
+
+            /* Adjust padding and margins */
+            .py-mobile-3 {
+                padding-top: 0.75rem !important;
+                padding-bottom: 0.75rem !important;
+            }
+
+            .my-mobile-3 {
+                margin-top: 0.75rem !important;
+                margin-bottom: 0.75rem !important;
+            }
+        }
+        .accordion-body p{
+            line-height: 1.5em;
+            font-size: 18px;
+        }
+        /* Accordion styling from previous code */
+        .accordion-button:not(.collapsed) {
+            color: #0F66B1 !important;
+            background-color: transparent !important;
+            box-shadow: none !important;
+        }
+
+        .accordion-button:hover,
+        .accordion-button:focus {
+            background-color: transparent !important;
+        }
+
+        .accordion-button:focus {
+            outline: none !important;
+            box-shadow: none !important;
+        }
+
+        .accordion-button::after {
+            display: none !important;
+        }
+
+        .accordion-button {
+            justify-content: space-between;
+            align-items: center;
+            color: #0F66B1;
+            font-weight: bold;
+        }
+
+        .accordion-icon {
+            width: 24px !important;
+            height: 24px !important;
+            background-color: #0F66B1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 2px;
+        }
+
+        .accordion-icon i {
+            color: white;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .accordion-button.collapsed .accordion-icon i {
+            transform: rotate(0deg);
+        }
+
+        .accordion-button:not(.collapsed) .accordion-icon i {
+            transform: rotate(180deg);
+        }
+        /* Add this to your CSS */
+        @media (max-width: 767px) {
+            .accordion-icon {
+                width: 24px !important;
+                height: 24px !important;
+                min-width: 24px !important; /* Prevents shrinking */
+                flex-shrink: 0 !important;  /* Prevents flexbox shrinking */
+                margin-left: 8px !important; /* Creates space between text and icon */
+            }
+
+            /* Ensure the button maintains space for the icon */
+            .accordion-button {
+                padding-left: 40px !important; /* Ensure there's enough space for the icon */
+            }
+        }
+    </style>
+</head>
+<body>
+<header class="container-fluid">
+    <div class="container px-0 d-flex flex-column header-image-container">
+        <div >
+            <img decoding="async" width="280" height="66" src="./assets/img/logo.svg" class="img-fluid" alt="Citizens Disability Logo">
+        </div>
+        <div class="horizontal-divider"></div>
+    </div>
+</header>
+
+<main class="background-color">
+    <!-- Hero Section -->
+    <section class="container-fluid text-white" style="background-color: #0F66B1" id="hero-section">
+        <div class="container d-flex flex-column text-center header-container">
+            <h1 class=" heading-lg" >
+                Congratulations!
+            </h1>
+            <div class="mobile-only header-success-desc">
+                <p class="heading-lg heading-text-2 call-now-desc">
+                    Don’t want to wait? We have representatives standing by to take your call during business hours!
+                </p>
+                <div class="d-inline-flex justify-content-center">
+                    <a href="tel:+17813120480" style="text-decoration: none;">
+                        <button class="call-now-cta-btn d-inline-flex align-items-center">
+                            <i class="fa-solid fa-phone" style="margin-right: 5px;"></i>
+                            <span>Call Now!</span>
+                        </button>
+                    </a>
+                </div>
+            </div>
+            <div class="steps">
+                <!-- Step 1 -->
+                <div class="step-card">
+                    <div class="step-icon">
+                        <i class="fas fa-file-signature"></i>
+                    </div>
+                    <h3 class="step-title">SUBMITED CONTACT FORM</h3>
+                    <p class="step-description">
+                        You've answered our questions and provided your contact information
+                    </p>
+                    <div class="step-status ">
+                        <i class="fas fa-check"></i> <span class="complete-text">COMPLETE</span>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="step-card step-card-two">
+                    <div class="step-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <h3 class="step-title">ANSWER OUR CALL</h3>
+                    <p class="step-description">
+                        To finish your evaluation we must talk with you. If you submitted your form during business
+                        hours a representative should call you within the next 5 minutes.
+                    </p>
+                    <div class="step-status pending">PENDING</div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="step-card">
+                    <div class="step-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <h3 class="step-title">PURSUE YOUR BENEFITS</h3>
+                    <p class="step-description">
+                        We can help maximize your chances of approval, our representatives will guide you through the
+                        application process.
+                    </p>
+                    <div class="step-status"></div>
+                </div>
+            </div>
+
+            <div class=" call-now-btn-container desktop-only">
+                <a href="tel:+17813120480" style="text-decoration: none;">
+                    <button class="call-now-cta-btn d-inline-flex align-items-center">
+                        <i class="fa-solid fa-phone" style="margin-right: 5px;"></i>
+                        <span>Call Now!</span>
+                    </button>
+                </a>
+            </div>
+            <p class="heading-lg heading-text-2 call-now-desc desktop-only">
+                Don’t want to wait? We have representatives standing by to take your call during business hours!
+            </p>
+        </div>
+    </section>
+    <form id="lead-metadata" style="display:none"></form>
+
+    <!-- About Section -->
+    <section class="container-fluid ">
+        <div class="container px-0">
+            <div class="d-flex align-items-center about-container">
+                <div class="d-flex flex-column about-container-left fs-18">
+                    <h2 class="heading-xl mb-0">
+                        We Are America’s Largest Social Disability Advocacy Group
+                    </h2>
+                    <div>
+                        <p  style="margin-bottom: 1.75em">
+                            We stand by our clients and help them with every step of the process, from initial application
+                            all the way through Appeals Council and beyond.
+                        </p>
+                        <ul class="about-section-list">
+                            <li>Our goal is to be your advocate from the beginning of the process to the end</li>
+                            <li>We handle cases nationwide – our advocates travel to hearings in every part of the country</li>
+                            <li>We have hundreds of trained specialists and advocates staff, all focused just on SSDI</li>
+                            <li>This is all we do – unlike local attorneys who handle many different types of cases, this is our specialty</li>
+                            <li>We only get paid if you win your benefits</li>
+                        </ul>
+                        <p style="margin-bottom: 1.75em"><strong>No one is more aggressive, or handles more SSDI Cases, than we do.</strong></p>
+                    </div>
+
+                </div>
+                <div class="about-container-right">
+                    <img fetchpriority="high" decoding="async" width="435" height="277"
+                         src="./assets/img/516m4s-image.webp"
+                         alt="Group photo of SSDI attorneys"
+                         class="img-fluid"
+                         srcset="./assets/img/516m4s-image.webp 435w, ./assets/img/516m4s-image-300x191.webp 300w"
+                         sizes="(max-width: 435px) 100vw, 435px">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Section -->
+    <div class="container-fluid">
+        <div class="container px-0">
+            <div class="why-choose-container">
+                <div class="why-choose-left">
+                    <img decoding="async" width="538" height="520"
+                         src="./assets/img/ftobzj-image.webp"
+                         class="img-fluid"
+                         alt="close up view of two people shaking hands."
+                         srcset="./assets/img/ftobzj-image.webp 538w, ./assets/img/ftobzj-image-300x290.webp 300w"
+                         sizes="(max-width: 538px) 100vw, 538px">
+                </div>
+                <div class="why-choose-right">
+                    <div class="why-choose-right-1">
+                        <h2 class="heading-xl mb-0">Why Choose Citizens Disability?</h2>
+                        <p class="why-choose-desc">
+                            <strong class="fw-700">We Work Tirelessly For Our Clients</strong><br>
+                            We work relentlessly to get our clients the benefits they deserve… and it shows! Citizens Disability clients received over $1.5 BILLION in SSDI & SSI payments just last year alone!
+                        </p>
+                    </div>
+
+                    <div class="why-choose-right-2">
+                        <div class="annual-client text-accent"><span >$1.5B</span> Received by Our Clients Annually!</div>
+                        <p>Getting our clients the benefits they deserve.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Section -->
+    <div class="container-fluid">
+        <div class="container px-0">
+            <div class="monthly-ssdi-benefits-container">
+                <div class="monthly-ssdi-benefits">
+                    <div class="monthly-ssdi-benefits-text">
+                        <h2 class="heading-xl-bolder text-white">Wondering if you might be able to access up to $3,345 in monthly SSDI benefits?</h2>
+                    </div>
+                </div>
+                <div class="monthly-ssdi-benefits-mobile">
+                    <div class="monthly-ssdi-benefits-text">
+                        <h2 class="heading-xl-bolder text-white">Wondering if you might be able to access up to $3,345 in monthly SSDI benefits?</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Core Values Section -->
+    <div class="container-fluid px-0">
+        <div class="container px-0 ">
+            <div class="core-values-container">
+                <div class="core-values-heading">
+                    <h2 class="heading-xl mb-0">Our Core Values</h2>
+                </div>
+                <div class="vector-image-container">
+                    <img loading="lazy" decoding="async" width="1024" height="126"
+                         src="./assets/img/1mrwzyz-group-1410097464-1024x126.webp"
+                         class="" alt="Vector lines"
+                         srcset="./assets/img/1mrwzyz-group-1410097464-1024x126.webp 1024w, ./assets/img/1mrwzyz-group-1410097464-300x37.png 300w, ./assets/img/1mrwzyz-group-1410097464-768x94.webp 768w, ./assets/img/1mrwzyz-group-1410097464-1536x189.webp 1536w, ./assets/img/1mrwzyz-group-1410097464.png 1902w"
+                         sizes="(max-width: 1024px) 100vw, 1024px">
+                </div>
+                <div class="core-values-images">
+                    <div class="core-values-commitment-image">
+                        <p class="mb-0">Commitment To Clients Success</p>
+                    </div>
+                    <div class="core-values-integrity-image">
+                        <p class="mb-0">Integrity</p>
+                    </div>
+                    <div class="core-values-excellence-image">
+                        <p class="mb-0">Excellence</p>
+                    </div>
+                    <div class="core-values-compassion-image">
+                        <p class="mb-0">Compassion</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Testimonials Section -->
+    <div class="container-fluid " style="background-color: #0F66B1">
+        <div class="container px-0">
+            <div class="testimonials-container">
+                <div class="testimonials-header">
+                    <p class="lh-md fw-700 fs-20 mb-0" style="color: #005197">WE'RE IN IT TO WIN IT! CITIZENS DISABILITY HAS WON OVER 100,000 CASES FOR OUR CLIENTS!</p>
+                </div>
+                <div class="testimonials-title">
+                    <p class=" text-accent mb-0">TESTIMONIAL</p>
+                </div>
+                <h2 class="heading-xl text-white mb-0" style="align-self: start">Our Clients Say</h2>
+                <div class="carousel-container">
+                    <div id="testimonialCarousel" class="carousel testimonials-carousel slide"
+                         data-bs-ride="carousel" data-bs-interval="5000">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active ">
+                                <div class="testimonial text-body ">
+                                    <p class="fst-italic text-light-black">
+                                        I couldn’t be happier than I am right now. I’ve tried to get disability years
+                                        ago, and then I contacted Citizens Disability and they were able to help me and
+                                        the judge came back with a fully favorable decision on my behalf. I couldn’t
+                                        have won this without the help of everyone at Citizens Disability. Awesome
+                                        company and support from all. I can’t thank you enough.
+                                    </p>
+                                    <cite><b>Laura T.</b>, Idaho</cite>
+                                </div>
+                            </div>
+
+                            <div class="carousel-item text-body">
+                                <div class="testimonial  ">
+                                    <p class="fst-italic text-light-black">
+                                        They basically held my hand throughout the whole process. Kept me informed,
+                                        up-to-date, and quickly answered any of my questions They were relentless. Filed
+                                        two appeals before my Hearing was finally held. My Disability Claim was approved
+                                        with no problems. Thank you very much Citizen Disability!
+                                    </p>
+                                    <cite><b>Robyn S.</b>, California</cite>
+                                </div>
+                            </div>
+
+                            <div class="carousel-item text-body">
+                                <div class="testimonial  ">
+                                    <p class="fst-italic text-light-black">
+                                        Not only did Citizens Disability help me get accepted on to disability payments,
+                                        a year later when it was time for me to be put on Medicare, they contacted me
+                                        repeatedly. At first I didn’t know why, but when I finally got back to them they
+                                        had an insurance expert compare plans to find me the best option. This was
+                                        included in my original fee! Outstanding service all the way around.
+                                    </p>
+                                    <cite><b>Charles E.</b>, Ohio</cite>
+                                </div>
+                            </div>
+
+                            <div class="carousel-item text-body">
+                                <div class="testimonial  ">
+                                    <p class="fst-italic text-light-black">
+                                        One step at a time, Citizens never gave up keeping me informed thru the entire
+                                        process. Even when I became discouraged Citizens would lighten my load with new
+                                        and promising information. Citizens is highly recommended by me. Excellent work,
+                                        excellent results. Job well done. A thousand thank-you(s) to the entire team at
+                                        Citizens Disability.
+                                    </p>
+                                    <cite><b>Vanice B.</b>, North Carolina</cite>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <div class="carousel-indicators position-relative m-0 d-flex justify-content-center px-4 rounded-pill" style="background-color: #0F66B1; width: auto; position: static;">
+                            <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="0"
+                                    class="active rounded-circle mx-1 testimonials-carousel-btn"
+                                    aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="1"
+                                    class="rounded-circle mx-1 testimonials-carousel-btn"
+                                    aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="2"
+                                    class="rounded-circle mx-1 testimonials-carousel-btn"
+                                    aria-label="Slide 3"></button>
+                            <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="3"
+                                    class="rounded-circle mx-1 testimonials-carousel-btn"
+                                    aria-label="Slide 4"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <div class="container-fluid bg-white">
+        <div class="container px-0">
+            <div class="accordion-container">
+                <div class="accordion-image-wrapper-container">
+                    <h2 class="text-center heading-xl mb-0">Frequently Asked Questions</h2>
+                    <div class="accordion accordion-flush faq-accordion" id="faqAccordionSection">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button heading-bold-md" style="color: #0F66B1" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="true" aria-controls="flush-collapseOne">
+                                    Is SSDI Right For Me?
+                                    <span class="accordion-icon fs-16">
+                                        <i class="fa-solid fa-chevron-down"></i>
+                                    </span>
+                                </button>
+                            </h2>
+                            <div id="flush-collapseOne" class="accordion-collapse collapse show"
+                                 data-bs-parent="#faqAccordionSection">
+                                <div class="accordion-body">
+                                    <p>You must meet several criteria in order to qualify for SSDI. You
+                                        must be insured under Social Security, which means you must have worked and paid federal
+                                        payroll taxes (FICA) for five of the last 10 years. You must also apply before reaching
+                                        full retirement age (65-67), and you must meet Social Security's definition of total
+                                        disability.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed heading-bold-md" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                                    Why was my initial claim for benefits denied?
+                                    <span class="accordion-icon fs-16">
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </span>
+                                </button>
+                            </h2>
+                            <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#faqAccordionSection">
+                                <div class="accordion-body">
+                                    <p>Applications can be denied for a variety of reasons. Most often, the claimant
+                                        is found to be working above <a
+                                                href="/applying-for-ssdi/step-1-substantial-gainful-activity-ssdi/"
+                                                style="text-decoration: none;">Substantial Gainful Activity (SGA)</a>
+                                        levels during their application process.</p>
+                                    <p>SSA may also determine that there is not enough medical evidence of a <a
+                                            href="/applying-for-ssdi/medical-conditions/"
+                                            style="text-decoration: none">disabling condition</a>, or that a prior
+                                        application was filed incorrectly.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed heading-bold-md" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                                    How can I increase my chances of receiving benefits?
+                                    <span class="accordion-icon fs-16">
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </span>
+                                </button>
+                            </h2>
+                            <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#faqAccordionSection">
+                                <div class="accordion-body">
+                                    <p>If possible, seek more frequent medical treatment for your condition(s). Keep
+                                        a tally of all the physicians you've seen over the years and a current list
+                                        of medications. Give your physicians ample time to complete <a
+                                                href="/applying-for-ssdi/functional-capacity/"
+                                                style="text-decoration: none">Residual Functional Capacity (RFC)</a>
+                                        questionnaires on your behalf. Call us whenever there
+                                        are changes to your medical treatment, or if your condition worsens, so we
+                                        can request additional medical records.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed heading-bold-md" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+                                    What are my options if I am denied benefits?
+                                    <span class="accordion-icon fs-16">
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </span>
+                                </button>
+                            </h2>
+                            <div id="flush-collapseFour" class="accordion-collapse collapse"
+                                 data-bs-parent="#faqAccordionSection">
+                                <div class="accordion-body">
+                                    <p>Plenty. Whether you are denied at the <a
+                                            href="/applying-for-ssdi/initial-application-for-ssdi-ssi-benefits/"
+                                            style="text-decoration: none">initial stage</a> or following an <a
+                                            href="/hearings/ssdi-appeals-council-process/"
+                                            style="text-decoration: none">appeal</a>,
+                                        contact us and we will help determine what your next step should be. You can
+                                        appeal
+                                        a denial or start the process from scratch by filing a new application. Our
+                                        representatives will help determine which option is best for you.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed heading-bold-md" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
+                                    How long will it take to receive a decision?
+                                    <span class="accordion-icon fs-16">
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </span>
+                                </button>
+                            </h2>
+                            <div id="flush-collapseFive" class="accordion-collapse collapse"
+                                 data-bs-parent="#faqAccordionSection">
+                                <div class="accordion-body">
+                                    <p>The SSA receives hundreds of thousands of applications each month. It can
+                                        take 5 to 7 months from the date of the initial application to receive a
+                                        decision, and if appeals are necessary, the process can take <a
+                                                href="/applying-for-ssdi/why-does-it-take-so-long/"
+                                                style="text-decoration: none;">several years</a>. Applicants must be
+                                        patient, but Citizens Disability will work
+                                        to make the process as quick and easy as possible.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="container-fluid bg-white">
+        <div class="container px-0">
+            <div class="help-apply-ssdi">
+                <div class="help-apply-ssdi-image-wrapper">
+                    <p class="heading-xl text-white">
+                        Want To See if We Can Help You Apply for SSDI/SSI?
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+<footer class="container-fluid ">
+    <div class="footer-container">
+        <section class="container px-0">
+            <div class="disclaimer-section bg-white">
+                <p class="mb-0" >
+                    Citizens Disability is committed to helping keep people safe from fraud. We will never ask for personal details
+                    to start an SSDI application over Facebook or social media. We will only ask for certain details, in private
+                    messages, to confirm the identity of a client in a customer service situation. The only way to begin an SSDI
+                    application with us is on the phone, through a number found on our website, or one of our clearly-marked
+                    advertisements. Please keep your personal details safe, don’t share them in a public forum, or with individuals
+                    who solicit your information.
+                </p>
+            </div>
+        </section>
+        <section class="container px-0">
+            <div class="privacy-policy-container">
+                <p>
+                    This website is an ADVERTISEMENT. The Social Security disability information you obtain at this site is not,
+                    nor is it intended to be, legal advice, and should be used for informational purposes only. Utilizing this
+                    website or contacting us does not create an advocate-client relationship. You should consult an advocate for
+                    advice regarding your individual situation.
+                </p>
+                <p>
+                    Citizens Disability is neither affiliated with nor endorsed by the Social Security Administration, United
+                    States Department of Veterans Affairs, or any other government entity or agency. Your claim may be assigned to
+                    another reputable representation organization for service.
+                </p>
+                <p>
+                    Citizens Disability is a disability advocacy group that advocates for people with SSDI or SSI claims pending
+                    before the Social Security Administration. We provide advocacy services for Americans who are disabled and
+                    unable to work. We help claimants with applications for Social Security Disability benefits. While we have many
+                    attorneys on our staff, we are not a law firm and do not provide legal service or represent claimants in an
+                    attorney-client relationship in this process.
+                </p>
+                <p>Copyright © 2025 Citizens Disability</p>
+                <p>
+                    <a href="https://www.citizensdisability.com/privacy-policy/"><u>Privacy Policy</u></a> |
+                    <a href="https://www.citizensdisability.com/terms-and-conditions/"><u>Terms and Conditions</u></a> |
+                    <a href="https://www.citizensdisability.com/sms-terms-and-conditions/"><u>SMS Terms & Conditions</u></a> |
+                    <a href="https://www.citizensdisability.com/cookie-declaration/"><u>Cookie Declaration</u></a>
+                </p>
+                <p class="mb-0">
+                    <a href="https://www.citizensdisability.com/privacy-policy/your-privacy-choices/">
+                        Your Privacy Choices
+                    </a>
+                    |
+                    <a href="https://www.citizensdisability.com/privacy-policy/your-privacy-choices/">Request My Personal Information</a>
+                </p>
+            </div>
+        </section>
+    </div>
+
+</footer>
+
+<button id="back-to-top" class="back-to-top-btn" title="Back to top">
+    <i class="fa-solid fa-chevron-up" style="font-size: 18px;font-weight: bolder"></i>
+</button>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const carousel = document.getElementById('testimonialCarousel');
+        if (carousel) {
+            carousel.addEventListener('slide.bs.carousel', function(event) {
+                const slideIndex = event.to;
+
+                document.querySelectorAll('.testimonials-carousel-btn').forEach((btn, index) => {
+                    if (index === slideIndex) {
+                        btn.classList.add('active');
+                        btn.setAttribute('aria-current', 'true');
+                    } else {
+                        btn.classList.remove('active');
+                        btn.removeAttribute('aria-current');
+                    }
+                });
+            });
+        }
+
+        const backToTopButton = document.getElementById('back-to-top');
+
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 320) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        function calculateMaxHeight() {
+            const carousel = document.getElementById('testimonialCarousel');
+            if (!carousel) return;
+
+            const inner = carousel.querySelector(".carousel-inner");
+            if (!inner) return;
+
+            const items = inner.querySelectorAll(".carousel-item");
+            if (!items.length) return;
+
+            // First reset the height to allow proper measurements
+            inner.style.height = 'auto';
+
+            // Force browser to recalculate layout
+            void inner.offsetHeight;
+
+            let maxHeight = 0;
+
+            items.forEach(item => {
+                // Save original state
+                const wasActive = item.classList.contains('active');
+                const originalVisibility = item.style.visibility;
+                const originalPosition = item.style.position;
+                const originalDisplay = item.style.display;
+
+                // Make item visible for measurement without affecting layout
+                if (!wasActive) {
+                    item.style.position = 'absolute';
+                    item.style.visibility = 'hidden';
+                    item.style.display = 'block';
+                }
+
+                // Get height and update max
+                const height = item.offsetHeight;
+                maxHeight = Math.max(maxHeight, height);
+
+                // Restore original state
+                if (!wasActive) {
+                    item.style.position = originalPosition;
+                    item.style.visibility = originalVisibility;
+                    item.style.display = originalDisplay;
+                }
+            });
+
+            // Set the height
+            inner.style.height = maxHeight + "px";
+        }
+
+        function debounce(func, delay) {
+            let timer;
+            return function() {
+                clearTimeout(timer);
+                timer = setTimeout(func, delay);
+            };
+        }
+
+        calculateMaxHeight();
+
+        window.addEventListener('load', calculateMaxHeight);
+
+        window.addEventListener("resize", debounce(calculateMaxHeight, 250));
+    });
+</script>
+</body>
