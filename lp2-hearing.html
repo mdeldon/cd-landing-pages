@@ -63,8 +63,9 @@
       color: #444;
       cursor: pointer;
       font-family: 'Aleo', Georgia, serif;
+      text-decoration: none;
     }
-    .lp-nav-link:hover { color: #0066CC; }
+    .lp-nav-link:hover { color: #0066CC; text-decoration: none; }
     .lp-nav-cta {
       background: #f4782a;
       color: #fff;
@@ -588,9 +589,9 @@
 <nav class="lp-nav">
   <a href="#"><img src="https://lp13.citizensdisability.com/assets/img/logo.svg" alt="Citizens Disability" class="lp-logo img"></a>
   <div class="lp-nav-links">
-    <span class="lp-nav-link">How It Works</span>
-    <span class="lp-nav-link">Our Process</span>
-    <span class="lp-nav-link">About Us</span>
+    <a class="lp-nav-link" href="https://www.citizensdisability.com/applying-for-ssdi/how-advocates-help/" target="_blank">How It Works</a>
+    <a class="lp-nav-link" href="https://www.citizensdisability.com/applying-for-ssdi/evaluation-process/" target="_blank">Our Process</a>
+    <a class="lp-nav-link" href="https://www.citizensdisability.com/about-us/" target="_blank">About Us</a>
   </div>
   <a href="#quiz" class="lp-nav-cta">See If We Can Help</a>
 </nav>
@@ -610,7 +611,7 @@
   <div class="lp-trust-item"><span class="lp-trust-icon">✓</span> 100,000+ People Helped</div>
   <div class="lp-trust-item"><span class="lp-trust-icon">✓</span> 15+ Years Experience</div>
   <div class="lp-trust-item"><span class="lp-trust-icon">✓</span> No Fee Unless You Win</div>
-  <div class="lp-trust-item"><span class="lp-trust-icon">✓</span> A+ BBB Rating</div>
+  <div class="lp-trust-item"><span class="lp-trust-icon">✓</span> National Firm</div>
 </div>
 
 <!-- ── SECTION: WHY REPRESENTATION MATTERS ── -->
@@ -826,8 +827,7 @@
   function chooseAge(answer) {
     age50plus = answer;
     if (answer === 'no') {
-      document.getElementById('under50-form').innerHTML = buildContactForm();
-      goToStep('step-under50');
+      window.location.href = 'thank-you-failure.html';
     } else {
       document.getElementById('form-container').innerHTML = buildContactForm();
       goToStep('step-form');
