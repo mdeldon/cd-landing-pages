@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Affiliate Creative Review | Citizens Disability</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #1E3A5F;
+      --secondary: #2ECC71;
+      --accent: #E74C3C;
+      --bg: #F8FAFC;
+      --card: #FFFFFF;
+      --text: #1A1A2E;
+      --text-secondary: #64748B;
+    }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); }
+    h1, h2, h3, h4 { font-family: 'DM Sans', sans-serif; }
+    .drag-active { border-color: var(--primary) !important; background: #EEF2FF !important; }
+    .status-pending { background: #FEF3C7; color: #92400E; }
+    .status-approved { background: #D1FAE5; color: #065F46; }
+    .status-rejected { background: #FEE2E2; color: #991B1B; }
+    .fade-in { animation: fadeIn 0.3s ease-out; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .pulse { animation: pulse 2s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
+  </style>
+</head>
+<body class="min-h-screen">
+  <!-- Header -->
+  <header class="bg-[#1E3A5F] text-white sticky top-0 z-50 shadow-lg">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center font-bold text-xl">CD</div>
+        <div>
+          <h1 class="font-semibold text-lg">Affiliate Creative Review</h1>
+          <p class="text-xs text-white/70">Citizens Disability</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-2">
+        <button onclick="switchRole('affiliate')" id="btn-affiliate" class="px-4 py-2 rounded-lg text-sm font-medium transition-all bg-white text-[#1E3A5F]">Affiliate</button>
+        <button onclick="switchRole('admin')" id="btn-admin" class="px-4 py-2 rounded-lg text-sm font-medium transition-all bg-white/20 text-white hover:bg-white/30">Admin</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-6xl mx-auto px-4 py-8">
+    
+    <!-- Affiliate View -->
+    <div id="view-affiliate" class="fade-in">
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Upload Form -->
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+          <h2 class="text-xl font-semibold mb-4">Submit Your Creative</h2>
+          <form id="upload-form" onsubmit="handleSubmit(event)">
+            
+            <!-- Affiliate Name -->
+            <div class="mb-4">
+              <label class="block text-sm font-medium text-gray-700 mb-1">Your Name / Affiliate ID</label>
+              <input type="text" id="affiliateName" required class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#1E3A5F] focus:border-transparent" placeholder="e.g., John Smith or AFF-123">
+            </div>
+
+            <!-- Ad Type -->
+            <div class="mb-4">
+              <label class="block text-sm font-medium text-gray-700 mb-1">Ad Platform</label>
+              <select id="adType" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#1E3A5F]">
+                <option value="facebook">Facebook/Instagram</option>
+                <option value="google">Google Ads</option>
+                <option value="display">Display Network</option>
+              </select>
+            </div>
+
+            <!-- Image Upload -->
+            <div class="mb-4">
+              <label class="block text-sm font-medium text-gray-700 mb-1">Ad Image</label>
+              <div id="drop-zone" class="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center cursor-pointer hover:border-[#1E3A5F] transition-colors" onclick="document.getElementById('imageInput').click()">
+                <input type="file" id="imageInput" accept="image/*" class="hidden" onchange="handleImageSelect(event)">
+                <div id="upload-placeholder">
+                  <svg class="w-12 h-12 mx-auto text-gray-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                  <p class="text-gray-500 text-sm">Click or drag image here</p>
+                  <p class="text-gray-400 text-xs mt-1">JPG, PNG up to 10MB</p>
+                </div>
+                <img id="image-preview" class="max-h-48 mx-auto rounded hidden">
+              </div>
+            </div>
+
+            <!-- Headline -->
+            <div class="mb-4">
+              <label class="block text-sm font-medium text-gray-700 mb-1">Headline <span class="text-gray-400 font-normal">(max 100 chars)</span></label>
+              <input type="text" id="headline" maxlength="100" required class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#1E3A5F]" placeholder="e.g., Help for Americans with Disabilities">
+              <p class="text-xs text-gray-400 mt-1"><span id="headline-count">0</span>/100</p>
+            </div>
+
+            <!-- Body Copy -->
+            <div class="mb-6">
+              <label class="block text-sm font-medium text-gray-700 mb-1">Body Copy <span class="text-gray-400 font-normal">(max 300 chars)</span></label>
+              <textarea id="bodyCopy" maxlength="300" rows="4" required class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#1E3A5F] resize-none" placeholder="Describe your ad message..."></textarea>
+              <p class="text-xs text-gray-400 mt-1"><span id="body-count">0</span>/300</p>
+            </div>
+
+            <button type="submit" class="w-full bg-[#1E3A5F] text-white py-3 rounded-lg font-semibold hover:bg-[#2a4a73] transition-colors">
+              Submit for Review
+            </button>
+          </form>
+        </div>
+
+        <!-- Results Panel -->
+        <div class="space-y-6">
+          <!-- Compliance Result -->
+          <div id="result-panel" class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hidden">
+            <div id="result-header" class="flex items-center gap-3 mb-4">
+              <div id="result-icon" class="w-12 h-12 rounded-full flex items-center justify-center text-2xl"></div>
+              <div>
+                <h3 id="result-title" class="font-semibold text-lg"></h3>
+                <p id="result-subtitle" class="text-sm text-gray-500"></p>
+              </div>
+            </div>
+
+            <!-- Issues List -->
+            <div id="issues-list" class="space-y-3 mb-6"></div>
+
+            <!-- Compliance Score -->
+            <div class="mb-6">
+              <div class="flex justify-between text-sm mb-1">
+                <span class="font-medium">Compliance Score</span>
+                <span id="score-value" class="font-semibold"></span>
+              </div>
+              <div class="h-3 bg-gray-100 rounded-full overflow-hidden">
+                <div id="score-bar" class="h-full rounded-full transition-all duration-500"></div>
+              </div>
+            </div>
+
+            <!-- Revised Version -->
+            <div id="revised-section" class="border-t pt-4">
+              <h4 class="font-semibold mb-3 flex items-center gap-2">
+                <span class="text-xl">✨</span> AI Suggested Revision
+              </h4>
+              
+              <div class="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-4 mb-4">
+                <p class="text-sm font-medium text-gray-700 mb-2">Revised Headline:</p>
+                <p id="revised-headline" class="text-[#1E3A5F] font-semibold"></p>
+              </div>
+              
+              <div class="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-4 mb-4">
+                <p class="text-sm font-medium text-gray-700 mb-2">Revised Body Copy:</p>
+                <p id="revised-body" class="text-gray-700"></p>
+              </div>
+
+              <div class="bg-amber-50 border border-amber-200 rounded-lg p-4">
+                <p class="text-sm font-medium text-amber-800 mb-2">🖼️ Image Prompt for DALL-E:</p>
+                <p id="image-prompt" class="text-sm text-amber-700 italic"></p>
+              </div>
+            </div>
+
+            <button onclick="resetForm()" class="mt-4 text-[#1E3A5F] font-medium hover:underline">
+              Submit Another Creative →
+            </button>
+          </div>
+
+          <!-- Empty State -->
+          <div id="empty-state" class="bg-white rounded-xl shadow-sm border border-gray-100 p-12 text-center">
+            <div class="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <span class="text-4xl">📋</span>
+            </div>
+            <h3 class="font-semibold text-lg mb-2">Ready to Submit</h3>
+            <p class="text-gray-500">Upload your ad creative and get instant feedback on compliance</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Admin View -->
+    <div id="view-admin" class="hidden fade-in">
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-6">
+        <div class="flex flex-wrap items-center justify-between gap-4">
+          <h2 class="text-xl font-semibold">Submissions Dashboard</h2>
+          <div class="flex items-center gap-3">
+            <select id="filter-status" onchange="renderAdminTable()" class="px-4 py-2 border border-gray-200 rounded-lg text-sm">
+              <option value="all">All Status</option>
+              <option value="pending">Pending</option>
+              <option value="approved">Approved</option>
+              <option value="rejected">Rejected</option>
+            </select>
+            <button onclick="clearAllData()" class="px-4 py-2 text-red-600 border border-red-200 rounded-lg text-sm hover:bg-red-50">
+              Clear All
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-4">
+          <p class="text-sm text-gray-500">Total</p>
+          <p id="stat-total" class="text-2xl font-bold text-[#1E3A5F]">0</p>
+        </div>
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-4">
+          <p class="text-sm text-gray-500">Pending</p>
+          <p id="stat-pending" class="text-2xl font-bold text-amber-600">0</p>
+        </div>
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-4">
+          <p class="text-sm text-gray-500">Approved</p>
+          <p id="stat-approved" class="text-2xl font-bold text-green-600">0</p>
+        </div>
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-4">
+          <p class="text-sm text-gray-500">Rejected</p>
+          <p id="stat-rejected" class="text-2xl font-bold text-red-600">0</p>
+        </div>
+      </div>
+
+      <!-- Submissions Table -->
+      <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="w-full">
+            <thead class="bg-gray-50 border-b">
+              <tr>
+                <th class="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase">Date</th>
+                <th class="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase">Affiliate</th>
+                <th class="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase">Type</th>
+                <th class="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase">Headline</th>
+                <th class="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase">Status</th>
+                <th class="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase">Score</th>
+                <th class="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="submissions-table" class="divide-y divide-gray-100">
+            </tbody>
+          </table>
+        </div>
+        <div id="no-submissions" class="p-12 text-center text-gray-500 hidden">
+          No submissions found
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Modal -->
+  <div id="modal" class="fixed inset-0 bg-black/50 z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+      <div class="p-6 border-b">
+        <div class="flex justify-between items-center">
+          <h3 class="font-semibold text-lg">Submission Details</h3>
+          <button onclick="closeModal()" class="text-gray-400 hover:text-gray-600">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+          </button>
+        </div>
+      </div>
+      <div id="modal-content" class="p-6"></div>
+    </div>
+  </div>
+
+  <script>
+    // ============ STATE ============
+    let currentRole = 'affiliate';
+    let submissions = JSON.parse(localStorage.getItem('cd_submissions') || '[]');
+    let selectedImage = null;
+
+    // ============ COMPLIANCE ENGINE ============
+    const FORBIDDEN_WORDS = ['qualify', 'eligible', 'approval', 'approved', 'guarantee', 'guaranteed', 'assure', 'assured'];
+    const FEAR_TACTICS = ['you might lose', '如果不', 'deadline', 'urgent', 'last chance', 'act now', 'running out', 'don\'t wait'];
+    const AGE_PATTERN = /(\d+)\s*(years?|yrs?|and older|plus)/i;
+    
+    function checkCompliance(headline, bodyCopy) {
+      const issues = [];
+      const text = `${headline} ${bodyCopy}`.toLowerCase();
+      
+      // Check forbidden words
+      for (const word of FORBIDDEN_WORDS) {
+        const regex = new RegExp(`\\b${word}\\b`, 'gi');
+        if (regex.test(text)) {
+          issues.push({
+            type: 'hard',
+            message: `Found forbidden word: "${word}"`,
+            suggestion: 'Remove words like "qualify", "eligible", "approval", "guarantee" - SSDI eligibility is based on work history, not these terms.'
+          });
+        }
+      }
+      
+      // Check fear tactics
+      for (const phrase of FEAR_TACTICS) {
+        if (text.includes(phrase.toLowerCase())) {
+          issues.push({
+            type: 'hard',
+            message: `Fear tactic detected: "${phrase}"`,
+            suggestion: 'Remove urgency tactics. SSDI is a legitimate program - no need for fear-based messaging.'
+          });
+        }
+      }
+      
+      // Check age mentions
+      const ageMatch = text.match(AGE_PATTERN);
+      if (ageMatch) {
+        const age = parseInt(ageMatch[1]);
+        if (age < 50) {
+          issues.push({
+            type: 'hard',
+            message: `Age mentioned (${age}) is under 50`,
+            suggestion: 'SSDI is for adults of all ages, but our target audience is 50+. Remove specific age or use 50+.'
+          });
+        }
+      }
+      
+      // Check for CTA
+      const ctas = ['call now', 'click here', 'learn more', 'get started', 'apply now', 'contact us', 'visit', 'call'];
+      const hasCTA = ctas.some(cta => text.includes(cta));
+      if (!hasCTA) {
+        issues.push({
+          type: 'soft',
+          message: 'No clear Call-to-Action detected',
+          suggestion: 'Add a clear CTA like "Call Now", "Learn More", or "Get Started"'
+        });
+      }
+      
+      // Check copy length
+      if (bodyCopy.length < 50) {
+        issues.push({
+          type: 'soft',
+          message: 'Body copy is very short',
+          suggestion: 'Add more context about SSDI benefits'
+        });
+      }
+      
+      const passed = issues.filter(i => i.type === 'hard').length === 0;
+      const score = Math.max(0, 100 - (issues.length * 15));
+      
+      return { passed, issues, score };
+    }
+
+    // ============ AI REVISION ============
+    function generateRevision(headline, bodyCopy, issues) {
+      let revisedHeadline = headline;
+      let revisedBody = bodyCopy;
+      
+      // Fix headline
+      if (headline.toLowerCase().includes('qualify')) {
+        revisedHeadline = headline.replace(/qualify/gi, 'Learn About');
+      }
+      if (headline.toLowerCase().includes('eligible')) {
+        revisedHeadline = headline.replace(/eligible/gi, 'Could Benefit From');
+      }
+      
+      // Fix body copy
+      for (const issue of issues) {
+        if (issue.message.includes('qualify') || issue.message.includes('eligible')) {
+          revisedBody = revisedBody.replace(/\b(qualify|eligible|approval|approved|guarantee)\b/gi, 'learn about');
+        }
+        if (issue.message.includes('fear') || issue.message.includes('urgent')) {
+          revisedBody = revisedBody.replace(/\b(urgent|act now|don\'t wait|last chance)\b/gi, 'today');
+        }
+      }
+      
+      // Add CTA if missing
+      if (!revisedBody.toLowerCase().includes('call') && !revisedBody.toLowerCase().includes('click')) {
+        revisedBody = revisedBody.trim() + ' Contact us to learn more about SSDI benefits.';
+      }
+      
+      // Image prompt
+      const imagePrompt = `Professional, empathetic SSDI advertisement concept: "${revisedHeadline}". Clean design with American flag motif, disability awareness symbol, warm colors (blue and gold), professional adults 50+, trustworthy healthcare setting, no text. High quality, advertising compliant.`;
+      
+      return { revisedHeadline, revisedBody, imagePrompt };
+    }
+
+    // ============ UI FUNCTIONS ============
+    function switchRole(role) {
+      currentRole = role;
+      document.getElementById('btn-affiliate').className = role === 'affiliate' 
+        ? 'px-4 py-2 rounded-lg text-sm font-medium transition-all bg-white text-[#1E3A5F]' 
+        : 'px-4 py-2 rounded-lg text-sm font-medium transition-all bg-white/20 text-white hover:bg-white/30';
+      document.getElementById('btn-admin').className = role === 'admin'
+        ? 'px-4 py-2 rounded-lg text-sm font-medium transition-all bg-white text-[#1E3A5F]' 
+        : 'px-4 py-2 rounded-lg text-sm font-medium transition-all bg-white/20 text-white hover:bg-white/30';
+      
+      document.getElementById('view-affiliate').classList.toggle('hidden', role !== 'affiliate');
+      document.getElementById('view-admin').classList.toggle('hidden', role !== 'admin');
+      
+      if (role === 'admin') renderAdminTable();
+    }
+
+    function handleImageSelect(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      
+      if (file.size > 10 * 1024 * 1024) {
+        alert('File too large. Max 10MB.');
+        return;
+      }
+      
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        selectedImage = e.target.result;
+        document.getElementById('image-preview').src = selectedImage;
+        document.getElementById('image-preview').classList.remove('hidden');
+        document.getElementById('upload-placeholder').classList.add('hidden');
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function handleSubmit(e) {
+      e.preventDefault();
+      
+      const affiliateName = document.getElementById('affiliateName').value;
+      const adType = document.getElementById('adType').value;
+      const headline = document.getElementById('headline').value;
+      const bodyCopy = document.getElementById('bodyCopy').value;
+      
+      // Run compliance check
+      const compliance = checkCompliance(headline, bodyCopy);
+      
+      // Generate revision
+      const revision = generateRevision(headline, bodyCopy, compliance.issues);
+      
+      // Create submission
+      const submission = {
+        id: Date.now().toString(),
+        affiliateName,
+        adType,
+        imageData: selectedImage,
+        headline,
+        bodyCopy,
+        status: compliance.passed ? 'pending' : 'pending', // Always pending initially
+        complianceResult: compliance,
+        revisedCopy: revision.revisedHeadline + '\n\n' + revision.revisedBody,
+        imagePrompt: revision.imagePrompt,
+        createdAt: new Date().toISOString(),
+        reviewedBy: null,
+        reviewedAt: null
+      };
+      
+      submissions.unshift(submission);
+      localStorage.setItem('cd_submissions', JSON.stringify(submissions));
+      
+      // Show results
+      showResult(submission);
+    }
+
+    function showResult(submission) {
+      document.getElementById('empty-state').classList.add('hidden');
+      document.getElementById('result-panel').classList.remove('hidden');
+      
+      const { passed, issues, score } = submission.complianceResult;
+      
+      // Header
+      const icon = document.getElementById('result-icon');
+      const title = document.getElementById('result-title');
+      const subtitle = document.getElementById('result-subtitle');
+      
+      if (passed) {
+        icon.className = 'w-12 h-12 rounded-full bg-green-100 flex items-center justify-center text-2xl';
+        icon.textContent = '✅';
+        title.textContent = 'Compliance Passed!';
+        title.className = 'font-semibold text-lg text-green-600';
+        subtitle.textContent = 'Your creative meets our guidelines';
+      } else {
+        icon.className = 'w-12 h-12 rounded-full bg-red-100 flex items-center justify-center text-2xl';
+        icon.textContent = '⚠️';
+        title.textContent = 'Compliance Issues Found';
+        title.className = 'font-semibold text-lg text-red-600';
+        subtitle.textContent = `${issues.filter(i => i.type === 'hard').length} hard issue(s), ${issues.filter(i => i.type === 'soft').length} soft warning(s)`;
+      }
+      
+      // Issues
+      const issuesList = document.getElementById('issues-list');
+      issuesList.innerHTML = issues.map(issue => `
+        <div class="p-3 rounded-lg ${issue.type === 'hard' ? 'bg-red-50 border border-red-200' : 'bg-amber-50 border border-amber-200'}">
+          <p class="font-medium text-sm ${issue.type === 'hard' ? 'text-red-800' : 'text-amber-800'}">${issue.message}</p>
+          <p class="text-sm ${issue.type === 'hard' ? 'text-red-600' : 'text-amber-600'} mt-1">💡 ${issue.suggestion}</p>
+        </div>
+      `).join('');
+      
+      // Score
+      document.getElementById('score-value').textContent = `${score}/100`;
+      const scoreBar = document.getElementById('score-bar');
+      scoreBar.style.width = `${score}%`;
+      scoreBar.className = `h-full rounded-full transition-all duration-500 ${score >= 80 ? 'bg-green-500' : score >= 50 ? 'bg-amber-500' : 'bg-red-500'}`;
+      
+      // Revised
+      document.getElementById('revised-headline').textContent = submission.complianceResult.passed ? headline : submission.revisedCopy.split('\n\n')[0];
+      document.getElementById('revised-body').textContent = submission.complianceResult.passed ? 'Your copy looks good! No changes needed.' : submission.revisedCopy.split('\n\n')[1];
+      document.getElementById('image-prompt').textContent = submission.imagePrompt;
+    }
+
+    function resetForm() {
+      document.getElementById('upload-form').reset();
+      document.getElementById('image-preview').classList.add('hidden');
+      document.getElementById('upload-placeholder').classList.remove('hidden');
+      selectedImage = null;
+      document.getElementById('result-panel').classList.add('hidden');
+      document.getElementById('empty-state').classList.remove('hidden');
+      document.getElementById('headline-count').textContent = '0';
+      document.getElementById('body-count').textContent = '0';
+    }
+
+    // ============ ADMIN FUNCTIONS ============
+    function renderAdminTable() {
+      const filter = document.getElementById('filter-status').value;
+      const filtered = filter === 'all' ? submissions : submissions.filter(s => s.status === filter);
+      
+      // Stats
+      document.getElementById('stat-total').textContent = submissions.length;
+      document.getElementById('stat-pending').textContent = submissions.filter(s => s.status === 'pending').length;
+      document.getElementById('stat-approved').textContent = submissions.filter(s => s.status === 'approved').length;
+      document.getElementById('stat-rejected').textContent = submissions.filter(s => s.status === 'rejected').length;
+      
+      // Table
+      const tbody = document.getElementById('submissions-table');
+      const noSubs = document.getElementById('no-submissions');
+      
+      if (filtered.length === 0) {
+        tbody.innerHTML = '';
+        noSubs.classList.remove('hidden');
+        return;
+      }
+      
+      noSubs.classList.add('hidden');
+      tbody.innerHTML = filtered.map(sub => `
+        <tr class="hover:bg-gray-50">
+          <td class="px-4 py-3 text-sm">${new Date(sub.createdAt).toLocaleDateString()}</td>
+          <td class="px-4 py-3 text-sm font-medium">${sub.affiliateName}</td>
+          <td class="px-4 py-3 text-sm capitalize">${sub.adType}</td>
+          <td class="px-4 py-3 text-sm max-w-xs truncate">${sub.headline}</td>
+          <td class="px-4 py-3">
+            <span class="px-2 py-1 rounded-full text-xs font-medium status-${sub.status}">${sub.status}</span>
+          </td>
+          <td class="px-4 py-3 text-sm font-semibold ${sub.complianceResult.score >= 80 ? 'text-green-600' : sub.complianceResult.score >= 50 ? 'text-amber-600' : 'text-red-600'}">
+            ${sub.complianceResult.score}
+          </td>
+          <td class="px-4 py-3">
+            <button onclick="viewSubmission('${sub.id}')" class="text-[#1E3A5F] hover:underline text-sm">View</button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function viewSubmission(id) {
+      const sub = submissions.find(s => s.id === id);
+      if (!sub) return;
+      
+      const content = document.getElementById('modal-content');
+      content.innerHTML = `
+        <div class="space-y-4">
+          ${sub.imageData ? `<img src="${sub.imageData}" class="w-full max-h-64 object-contain bg-gray-100 rounded-lg">` : ''}
+          
+          <div>
+            <p class="text-sm text-gray-500">Affiliate</p>
+            <p class="font-medium">${sub.affiliateName}</p>
+          </div>
+          
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <p class="text-sm text-gray-500">Ad Type</p>
+              <p class="font-medium capitalize">${sub.adType}</p>
+            </div>
+            <div>
+              <p class="text-sm text-gray-500">Score</p>
+              <p class="font-medium ${sub.complianceResult.score >= 80 ? 'text-green-600' : 'text-red-600'}">${sub.complianceResult.score}/100</p>
+            </div>
+          </div>
+          
+          <div>
+            <p class="text-sm text-gray-500">Original Headline</p>
+            <p class="font-medium">${sub.headline}</p>
+          </div>
+          
+          <div>
+            <p class="text-sm text-gray-500">Original Body</p>
+            <p class="text-sm">${sub.bodyCopy}</p>
+          </div>
+          
+          ${sub.complianceResult.issues.length > 0 ? `
+          <div>
+            <p class="text-sm text-gray-500 mb-2">Issues Found</p>
+            <div class="space-y-2">
+              ${sub.complianceResult.issues.map(i => `
+                <div class="p-2 rounded bg-gray-50 text-sm">
+                  <span class="font-medium ${i.type === 'hard' ? 'text-red-600' : 'text-amber-600'}">${i.type.toUpperCase()}:</span> ${i.message}
+                </div>
+              `).join('')}
+            </div>
+          </div>
+          ` : ''}
+          
+          <div class="border-t pt-4">
+            <p class="text-sm text-gray-500 mb-2">AI Suggested Revision</p>
+            <div class="bg-blue-50 p-3 rounded-lg">
+              <p class="font-medium text-sm">${sub.revisedCopy.split('\n\n')[0]}</p>
+              <p class="text-sm mt-2">${sub.revisedCopy.split('\n\n')[1]}</p>
+            </div>
+          </div>
+          
+          <div class="flex gap-2 pt-4">
+            <button onclick="updateStatus('${sub.id}', 'approved')" class="flex-1 bg-green-600 text-white py-2 rounded-lg font-medium hover:bg-green-700">Approve</button>
+            <button onclick="updateStatus('${sub.id}', 'rejected')" class="flex-1 bg-red-600 text-white py-2 rounded-lg font-medium hover:bg-red-700">Reject</button>
+          </div>
+        </div>
+      `;
+      
+      document.getElementById('modal').classList.remove('hidden');
+    }
+
+    function updateStatus(id, status) {
+      const idx = submissions.findIndex(s => s.id === id);
+      if (idx === -1) return;
+      
+      submissions[idx].status = status;
+      submissions[idx].reviewedAt = new Date().toISOString();
+      localStorage.setItem('cd_submissions', JSON.stringify(submissions));
+      
+      closeModal();
+      renderAdminTable();
+    }
+
+    function closeModal() {
+      document.getElementById('modal').classList.add('hidden');
+    }
+
+    function clearAllData() {
+      if (confirm('Are you sure you want to clear all submissions?')) {
+        submissions = [];
+        localStorage.removeItem('cd_submissions');
+        renderAdminTable();
+      }
+    }
+
+    // ============ CHAR COUNT ============
+    document.getElementById('headline').addEventListener('input', e => {
+      document.getElementById('headline-count').textContent = e.target.value.length;
+    });
+    document.getElementById('bodyCopy').addEventListener('input', e => {
+      document.getElementById('body-count').textContent = e.target.value.length;
+    });
+
+    // ============ DRAG DROP ============
+    const dropZone = document.getElementById('drop-zone');
+    dropZone.addEventListener('dragover', e => {
+      e.preventDefault();
+      dropZone.classList.add('drag-active');
+    });
+    dropZone.addEventListener('dragleave', () => {
+      dropZone.classList.remove('drag-active');
+    });
+    dropZone.addEventListener('drop', e => {
+      e.preventDefault();
+      dropZone.classList.remove('drag-active');
+      const file = e.dataTransfer.files[0];
+      if (file && file.type.startsWith('image/')) {
+        const input = document.getElementById('imageInput');
+        const dt = new DataTransfer();
+        dt.items.add(file);
+        input.files = dt.files;
+        handleImageSelect({ target: input });
+      }
+    });
+  </script>
+</body>
+</html>
