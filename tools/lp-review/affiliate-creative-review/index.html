@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Affiliate Creative Review | Citizens Disability</title>
-  <script src="https://cdn.jsdelivr.net/npm/tesseract.js/dist/tesseract.min.js"></script>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
@@ -400,25 +399,10 @@
       reader.readAsDataURL(file);
     }
 
-    function toggleOtherBrand() {
-  const select = document.getElementById("brandChannel");
-  const otherDiv = document.getElementById("otherBrandDiv");
-  if (select.value === "other") {
-    otherDiv.classList.remove("hidden");
-    document.getElementById("otherBrand").setAttribute("required", "true");
-  } else {
-    otherDiv.classList.add("hidden");
-    document.getElementById("otherBrand").removeAttribute("required");
-  }
-}
-
-function handleSubmit(e) {
+    function handleSubmit(e) {
       e.preventDefault();
       
-      const affiliateName = document.getElementById("affiliateName").value;
-      const affiliateCode = document.getElementById("affiliateCode").value;
-      let brandChannel = document.getElementById("brandChannel").value;
-      if (brandChannel === "other") brandChannel = document.getElementById("otherBrand").value;
+      const affiliateName = document.getElementById('affiliateName').value;
       const adType = document.getElementById('adType').value;
       const headline = document.getElementById('headline').value;
       const bodyCopy = document.getElementById('bodyCopy').value;
@@ -431,8 +415,6 @@ function handleSubmit(e) {
       
       // Create submission
       const submission = {
-        affiliateCode,
-        brandChannel,
         id: Date.now().toString(),
         affiliateName,
         adType,
