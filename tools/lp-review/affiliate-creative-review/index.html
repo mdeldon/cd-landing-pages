@@ -253,14 +253,21 @@
     </div>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
   <script>
     // ============ STATE ============
     let currentRole = 'affiliate';
     let submissions = JSON.parse(localStorage.getItem('cd_submissions') || '[]');
     let selectedImage = null;
+    let isProcessingOCR = false;
 
     // ============ COMPLIANCE ENGINE ============
-    const FORBIDDEN_WORDS = ['qualify', 'eligible', 'approval', 'approved', 'guarantee', 'guaranteed', 'assure', 'assured'];
+    // FTC-compliant forbidden words (SSDI doesn't use qualification language)
+    const FORBIDDEN_WORDS = [
+      'qualify', 'eligible', 'approval', 'approved', 'guarantee', 'guaranteed', 'assure', 'assured',
+      // Bad CTAs - FTC compliance (hard errors)
+      'check now', 'see if you qualify', 'find out if you qualify', 'apply today', 'start now', 'sign up now'
+    ];
     const FEAR_TACTICS = ['you might lose', '如果不', 'deadline', 'urgent', 'last chance', 'act now', 'running out', 'don\'t wait'];
     const AGE_PATTERN = /(\d+)\s*(years?|yrs?|and older|plus)/i;
     
@@ -268,14 +275,18 @@
       const issues = [];
       const text = `${headline} ${bodyCopy}`.toLowerCase();
       
-      // Check forbidden words
+      // Check forbidden words (including bad CTAs)
       for (const word of FORBIDDEN_WORDS) {
-        const regex = new RegExp(`\\b${word}\\b`, 'gi');
-        if (regex.test(text)) {
+        if (text.includes(word.toLowerCase())) {
+          // Determine if it's a bad CTA
+          const badCTAs = ['check now', 'see if you qualify', 'find out if you qualify', 'apply today', 'start now', 'sign up now'];
+          const isBadCTA = badCTAs.includes(word.toLowerCase());
           issues.push({
             type: 'hard',
-            message: `Found forbidden word: "${word}"`,
-            suggestion: 'Remove words like "qualify", "eligible", "approval", "guarantee" - SSDI eligibility is based on work history, not these terms.'
+            message: isBadCTA ? `Bad CTA detected: "${word}" - Not FTC compliant` : `Found forbidden word: "${word}"`,
+            suggestion: isBadCTA 
+              ? 'Use compliant CTAs like "Learn More", "Get Started", or "Contact Us" instead of urgency-driven language.'
+              : 'Remove words like "qualify", "eligible", "approval", "guarantee" - SSDI eligibility is based on work history, not these terms.'
           });
         }
       }
@@ -395,8 +406,124 @@
         document.getElementById('image-preview').src = selectedImage;
         document.getElementById('image-preview').classList.remove('hidden');
         document.getElementById('upload-placeholder').classList.add('hidden');
+        
+        // Run OCR on the image
+        processOCR(selectedImage);
       };
       reader.readAsDataURL(file);
+    }
+    
+    // OCR Processing with Tesseract.js
+    async function processOCR(imageData) {
+      if (isProcessingOCR) return;
+      isProcessingOCR = true;
+      
+      // Show loading state
+      const dropZone = document.getElementById('drop-zone');
+      const originalContent = dropZone.innerHTML;
+      dropZone.innerHTML = `
+        <div class="flex flex-col items-center">
+          <div class="w-10 h-10 border-4 border-[#1E3A5F] border-t-transparent rounded-full animate-spin mb-3"></div>
+          <p class="text-[#1E3A5F] font-medium">Extracting text...</p>
+          <p class="text-gray-500 text-sm">This may take a few seconds</p>
+        </div>
+      `;
+      
+      try {
+        const result = await Tesseract.recognize(imageData, 'eng', {
+          logger: m => console.log(m)
+        });
+        
+        const extractedText = result.data.text.trim();
+        console.log('OCR Extracted:', extractedText);
+        
+        if (extractedText) {
+          // Parse extracted text to fill headline and body
+          fillFieldsFromOCR(extractedText);
+          
+          // Show success message
+          dropZone.innerHTML = `
+            <div class="flex flex-col items-center">
+              <span class="text-3xl mb-2">✅</span>
+              <p class="text-green-600 font-medium">Text extracted!</p>
+              <p class="text-gray-500 text-sm">Fields auto-filled</p>
+            </div>
+          `;
+        } else {
+          dropZone.innerHTML = `
+            <div class="flex flex-col items-center">
+              <span class="text-3xl mb-2">⚠️</span>
+              <p class="text-amber-600 font-medium">No text found</p>
+              <p class="text-gray-500 text-sm">Please enter manually</p>
+            </div>
+          `;
+        }
+        
+        // Restore after 2 seconds
+        setTimeout(() => {
+          dropZone.innerHTML = `
+            <input type="file" id="imageInput" accept="image/*" class="hidden" onchange="handleImageSelect(event)">
+            <img id="image-preview" class="max-h-48 mx-auto rounded" src="${imageData}">
+            <p class="text-gray-500 text-sm mt-2">Click to change image</p>
+          `;
+          isProcessingOCR = false;
+        }, 2000);
+        
+      } catch (error) {
+        console.error('OCR Error:', error);
+        dropZone.innerHTML = `
+          <div class="flex flex-col items-center">
+            <span class="text-3xl mb-2">❌</span>
+            <p class="text-red-600 font-medium">OCR failed</p>
+            <p class="text-gray-500 text-sm">Please enter manually</p>
+          </div>
+        `;
+        
+        setTimeout(() => {
+          dropZone.innerHTML = originalContent;
+          isProcessingOCR = false;
+        }, 2000);
+      }
+    }
+    
+    function fillFieldsFromOCR(text) {
+      // Split into lines and clean up
+      const lines = text.split('\n').map(l => l.trim()).filter(l => l.length > 0);
+      
+      if (lines.length === 0) return;
+      
+      // Try to identify headline (usually first significant line)
+      let headline = '';
+      let bodyLines = [];
+      
+      // Find the first line that's likely a headline (shorter, more impactful)
+      for (let i = 0; i < Math.min(3, lines.length); i++) {
+        if (lines[i].length > 10 && lines[i].length < 80) {
+          headline = lines[i];
+          bodyLines = lines.slice(i + 1);
+          break;
+        }
+      }
+      
+      // If no headline found, use first line
+      if (!headline && lines.length > 0) {
+        headline = lines[0];
+        bodyLines = lines.slice(1);
+      }
+      
+      // Fill headline (truncate if needed)
+      const headlineField = document.getElementById('headline');
+      headlineField.value = headline.substring(0, 100);
+      document.getElementById('headline-count').textContent = headlineField.value.length;
+      
+      // Fill body copy (join remaining lines, truncate if needed)
+      const bodyField = document.getElementById('bodyCopy');
+      let bodyText = bodyLines.join(' ').trim();
+      
+      // Clean up the text
+      bodyText = bodyText.replace(/\s+/g, ' ').trim();
+      bodyField.value = bodyText.substring(0, 300);
+      document.getElementById('body-count').textContent = bodyField.value.length;
     }
 
     function handleSubmit(e) {
