@@ -399,10 +399,25 @@
       reader.readAsDataURL(file);
     }
 
-    function handleSubmit(e) {
+    function toggleOtherBrand() {
+  const select = document.getElementById("brandChannel");
+  const otherDiv = document.getElementById("otherBrandDiv");
+  if (select.value === "other") {
+    otherDiv.classList.remove("hidden");
+    document.getElementById("otherBrand").setAttribute("required", "true");
+  } else {
+    otherDiv.classList.add("hidden");
+    document.getElementById("otherBrand").removeAttribute("required");
+  }
+}
+
+function handleSubmit(e) {
       e.preventDefault();
       
-      const affiliateName = document.getElementById('affiliateName').value;
+      const affiliateName = document.getElementById("affiliateName").value;
+      const affiliateCode = document.getElementById("affiliateCode").value;
+      let brandChannel = document.getElementById("brandChannel").value;
+      if (brandChannel === "other") brandChannel = document.getElementById("otherBrand").value;
       const adType = document.getElementById('adType').value;
       const headline = document.getElementById('headline').value;
       const bodyCopy = document.getElementById('bodyCopy').value;
@@ -415,6 +430,8 @@
       
       // Create submission
       const submission = {
+        affiliateCode,
+        brandChannel,
         id: Date.now().toString(),
         affiliateName,
         adType,
