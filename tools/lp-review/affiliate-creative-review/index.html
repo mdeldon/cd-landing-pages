@@ -85,6 +85,9 @@
                 </div>
                 <img id="image-preview" class="max-h-48 mx-auto rounded hidden">
               </div>
+              <button type="button" id="extract-text-btn" onclick="extractTextFromImage()" class="mt-2 w-full bg-gray-100 text-gray-700 py-2 rounded-lg font-medium hover:bg-gray-200 transition-colors hidden">
+                📝 Extract Text from Image
+              </button>
             </div>
 
             <!-- Headline -->
@@ -280,9 +283,12 @@
     let selectedImage = null;
     let isProcessingOCR = false;
 
-    // ============ COMPLIANCE ENGINE ============
+    // ============ SAGE COMPLIANCE ENGINE ============
+    // FTC Guidelines for SSDI Marketing - Enhanced by Sage
+    // Hard Rules (Automatic Fail)
     // FTC-compliant forbidden words (SSDI doesn't use qualification language)
     const FORBIDDEN_WORDS = [
+      'are you disabled', 'get approved', 'get approved for', 'you may qualify', 'could qualify',
       'qualify', 'eligible', 'approval', 'approved', 'guarantee', 'guaranteed', 'assure', 'assured',
       // Bad CTAs - FTC compliance (hard errors)
       'check now', 'see if you qualify', 'find out if you qualify', 'apply today', 'start now', 'sign up now'
@@ -426,10 +432,19 @@
         document.getElementById('image-preview').classList.remove('hidden');
         document.getElementById('upload-placeholder').classList.add('hidden');
         
-        // Run OCR on the image
-        processOCR(selectedImage);
+        // Show the extract button - OCR only runs when user clicks it
+        document.getElementById('extract-text-btn').classList.remove('hidden');
       };
       reader.readAsDataURL(file);
+    }
+    
+    // Extract text from uploaded image (called by button)
+    function extractTextFromImage() {
+      if (!selectedImage) {
+        alert('Please upload an image first.');
+        return;
+      }
+      processOCR(selectedImage);
     }
     
     // OCR Processing with Tesseract.js
@@ -460,12 +475,12 @@
           // Parse extracted text to fill headline and body
           fillFieldsFromOCR(extractedText);
           
-          // Show success message
+          // Show simple success message - let user review and edit manually
           dropZone.innerHTML = `
             <div class="flex flex-col items-center">
               <span class="text-3xl mb-2">✅</span>
               <p class="text-green-600 font-medium">Text extracted!</p>
-              <p class="text-gray-500 text-sm">Fields auto-filled</p>
+              <p class="text-gray-500 text-sm">Please review and edit manually</p>
             </div>
           `;
         } else {
@@ -511,37 +526,18 @@
       
       if (lines.length === 0) return;
       
-      // Try to identify headline (usually first significant line)
-      let headline = '';
-      let bodyLines = [];
-      
-      // Find the first line that's likely a headline (shorter, more impactful)
-      for (let i = 0; i < Math.min(3, lines.length); i++) {
-        if (lines[i].length > 10 && lines[i].length < 80) {
-          headline = lines[i];
-          bodyLines = lines.slice(i + 1);
-          break;
-        }
-      }
-      
-      // If no headline found, use first line
-      if (!headline && lines.length > 0) {
-        headline = lines[0];
-        bodyLines = lines.slice(1);
-      }
+      // Simple approach: first line = headline, rest = body
+      const headline = lines[0] || '';
+      const bodyLines = lines.slice(1).join(' ').trim();
       
       // Fill headline (truncate if needed)
       const headlineField = document.getElementById('headline');
       headlineField.value = headline.substring(0, 100);
       document.getElementById('headline-count').textContent = headlineField.value.length;
       
-      // Fill body copy (join remaining lines, truncate if needed)
+      // Fill body copy
       const bodyField = document.getElementById('bodyCopy');
-      let bodyText = bodyLines.join(' ').trim();
-      
-      // Clean up the text
-      bodyText = bodyText.replace(/\s+/g, ' ').trim();
-      bodyField.value = bodyText.substring(0, 300);
+      bodyField.value = bodyLines.substring(0, 300);
       document.getElementById('body-count').textContent = bodyField.value.length;
     }
 
@@ -624,7 +620,7 @@
       scoreBar.className = `h-full rounded-full transition-all duration-500 ${score >= 80 ? 'bg-green-500' : score >= 50 ? 'bg-amber-500' : 'bg-red-500'}`;
       
       // Revised
-      document.getElementById('revised-headline').textContent = submission.complianceResult.passed ? headline : submission.revisedCopy.split('\n\n')[0];
+      document.getElementById('revised-headline').textContent = submission.complianceResult.passed ? submission.headline : submission.revisedCopy.split('\n\n')[0];
       document.getElementById('revised-body').textContent = submission.complianceResult.passed ? 'Your copy looks good! No changes needed.' : submission.revisedCopy.split('\n\n')[1];
       document.getElementById('image-prompt').textContent = submission.imagePrompt;
       
