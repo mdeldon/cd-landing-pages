@@ -83,14 +83,6 @@
     .lp-nav-cta:hover { background: #d9631c; color: #fff; }
 
     @media (max-width: 768px) {
-
-.lp-hero h1 { font-size: 32px !important; }
-.lp-hero p { font-size: 16px !important; }
-.lp-cta-btn { font-size: 16px !important; padding: 14px 24px !important; }
-      
-      .lp-hero h1 { font-size: 32px; }
-      .lp-hero p { font-size: 16px; }
-      .lp-cta-btn { font-size: 16px; padding: 14px 24px; }
       .lp-nav { padding: 12px 20px; }
       .lp-nav-links { display: none; }
     }
@@ -113,19 +105,18 @@
       pointer-events: none;
     }
     .lp-hero-inner {
-      text-align: center;
       max-width: 680px;
       position: relative;
       z-index: 1;
     }
     .lp-hero h1 {
       font-family: 'Merriweather', Georgia, serif;
-      font-size: 52px;
+      font-size: 44px;
       font-weight: 400;
       line-height: 1.2;
       margin-bottom: 20px;
     }
-    .lp-hero p { font-size: 20px;
+    .lp-hero p {
       font-size: 18px;
       color: rgba(255,255,255,0.88);
       line-height: 1.6;
@@ -138,7 +129,7 @@
       margin-top: 14px;
       font-style: italic;
     }
-    .lp-cta-btn { font-size: 20px; padding: 18px 40px; box-shadow: 0 4px 14px rgba(244,120,42,0.4); }
+    .lp-cta-btn {
       display: inline-block;
       background: #f4782a;
       color: #fff;
@@ -155,18 +146,10 @@
     .lp-cta-btn:hover { background: #d9631c; color: #fff; transform: translateY(-1px); }
 
     @media (max-width: 768px) {
-
-.lp-hero h1 { font-size: 32px !important; }
-.lp-hero p { font-size: 16px !important; }
-.lp-cta-btn { font-size: 16px !important; padding: 14px 24px !important; }
-      
-      .lp-hero h1 { font-size: 32px; }
-      .lp-hero p { font-size: 16px; }
-      .lp-cta-btn { font-size: 16px; padding: 14px 24px; }
       .lp-hero { padding: 48px 20px 48px; }
       .lp-hero h1 { font-size: 30px; }
-      .lp-hero p { font-size: 20px; font-size: 16px; }
-      .lp-cta-btn { font-size: 20px; padding: 18px 40px; box-shadow: 0 4px 14px rgba(244,120,42,0.4); } font-size: 16px; padding: 14px 28px; }
+      .lp-hero p { font-size: 16px; }
+      .lp-cta-btn { font-size: 16px; padding: 14px 28px; }
     }
 
     /* ── TRUST BAR ── */
@@ -191,14 +174,6 @@
     .lp-trust-icon { font-size: 15px; color: #5BD4A4; }
 
     @media (max-width: 768px) {
-
-.lp-hero h1 { font-size: 32px !important; }
-.lp-hero p { font-size: 16px !important; }
-.lp-cta-btn { font-size: 16px !important; padding: 14px 24px !important; }
-      
-      .lp-hero h1 { font-size: 32px; }
-      .lp-hero p { font-size: 16px; }
-      .lp-cta-btn { font-size: 16px; padding: 14px 24px; }
       .lp-trust-bar { padding: 14px 20px; gap: 16px; }
       .lp-trust-item { font-size: 12px; }
     }
@@ -568,14 +543,6 @@
     }
 
     @media (max-width: 768px) {
-
-.lp-hero h1 { font-size: 32px !important; }
-.lp-hero p { font-size: 16px !important; }
-.lp-cta-btn { font-size: 16px !important; padding: 14px 24px !important; }
-      
-      .lp-hero h1 { font-size: 32px; }
-      .lp-hero p { font-size: 16px; }
-      .lp-cta-btn { font-size: 16px; padding: 14px 24px; }
       .lp-quiz-container { padding: 32px 24px; }
       .lp-quiz-section { padding: 40px 16px; }
       .quiz-question { font-size: 18px; }
@@ -629,9 +596,9 @@
 
 <!-- ── HERO ── -->
 <div class="lp-hero">
-  <div class="lp-hero-inner" style="text-align:center;max-width:800px;margin:0 auto">
-    <h1 style="font-size:52px">You were denied.<br>That Doesn't Mean<br>It's Over.</h1>
-    <p style="font-size:20px">For adults 50+ who've been denied SSDI, Citizens Disability has helped 70,000+ win after denial. We navigate the reconsideration process — at no cost unless you win.</p>
+  <div class="lp-hero-inner">
+    <h1>You Were Denied.<br>That Doesn't Mean<br>It's Over.</h1>
+    <p>For adults 50+ who've been denied SSDI, Citizens Disability has helped 70,000+ win after denial. We navigate the reconsideration process — at no cost unless you win.</p>
     <a href="#quiz" class="lp-cta-btn">See If We Can Help →</a>
     <div class="lp-hero-tagline">Find out your options — Free case review. No obligation, no cost unless you win.</div>
   </div>
@@ -702,14 +669,14 @@
       <div class="quiz-question">What was the main reason Social Security denied you?</div>
       <div class="quiz-sub">Choose the one that best matches what your denial letter said.</div>
       <div class="quiz-btn-group">
-        <button class="style="font-size:20px;padding:18px 40px;box-shadow:0 4px 14px rgba(244,120,42,0.4)"quiz-option-btn" onclick="chooseDenialType('medical')">
+        <button class="quiz-option-btn" onclick="chooseDenialType('medical')">
           <div class="quiz-option-icon">🏥</div>
           <div class="quiz-option-text">
             <strong>My medical condition</strong>
             <span>SSA said I wasn't disabled enough or didn't have enough medical evidence</span>
           </div>
         </button>
-        <button class="style="font-size:20px;padding:18px 40px;box-shadow:0 4px 14px rgba(244,120,42,0.4)"quiz-option-btn" onclick="chooseDenialType('technical')">
+        <button class="quiz-option-btn" onclick="chooseDenialType('technical')">
           <div class="quiz-option-icon">📋</div>
           <div class="quiz-option-text">
             <strong>My work history or credits</strong>
@@ -728,7 +695,7 @@
         <p>Citizens Disability may be able to help you explore a <strong>new application</strong> based on your situation. It only takes a moment to find out.</p>
         <a href="index.html" class="lp-cta-btn" style="display: inline-block; font-size: 16px;">Let's Start Fresh →</a>
         <div style="margin-top: 16px;">
-          <button class="style="font-size:20px;padding:18px 40px;box-shadow:0 4px 14px rgba(244,120,42,0.4)"quiz-back-btn" onclick="goToStep('step-1')"><i class="fa-solid fa-arrow-left"></i> Go back</button>
+          <button class="quiz-back-btn" onclick="goToStep('step-1')"><i class="fa-solid fa-arrow-left"></i> Go back</button>
         </div>
       </div>
     </div>
@@ -743,10 +710,10 @@
       <div class="quiz-question">Are you within 60 days of receiving your denial letter?</div>
       <div class="quiz-sub">The reconsideration window typically runs 60 days from the date on your denial notice. It's okay if you're not sure — an advocate can help you check.</div>
       <div class="quiz-yn-group">
-        <button class="style="font-size:20px;padding:18px 40px;box-shadow:0 4px 14px rgba(244,120,42,0.4)"quiz-yn-btn yes" onclick="choose60Day('yes')">Yes</button>
-        <button class="style="font-size:20px;padding:18px 40px;box-shadow:0 4px 14px rgba(244,120,42,0.4)"quiz-yn-btn no" onclick="choose60Day('no')">No / Not Sure</button>
+        <button class="quiz-yn-btn yes" onclick="choose60Day('yes')">Yes</button>
+        <button class="quiz-yn-btn no" onclick="choose60Day('no')">No / Not Sure</button>
       </div>
-      <button class="style="font-size:20px;padding:18px 40px;box-shadow:0 4px 14px rgba(244,120,42,0.4)"quiz-back-btn" onclick="goToStep('step-1')"><i class="fa-solid fa-arrow-left"></i> Go back</button>
+      <button class="quiz-back-btn" onclick="goToStep('step-1')"><i class="fa-solid fa-arrow-left"></i> Go back</button>
     </div>
 
     <!-- STEP 3: Age -->
@@ -759,10 +726,10 @@
       <div class="quiz-question">Are you 50 years old or older?</div>
       <div class="quiz-sub">Age is one of the factors SSA considers — and it can work in your favor.</div>
       <div class="quiz-yn-group">
-        <button class="style="font-size:20px;padding:18px 40px;box-shadow:0 4px 14px rgba(244,120,42,0.4)"quiz-yn-btn yes" onclick="chooseAge('yes')">Yes, I'm 50+</button>
-        <button class="style="font-size:20px;padding:18px 40px;box-shadow:0 4px 14px rgba(244,120,42,0.4)"quiz-yn-btn no" onclick="chooseAge('no')">No, I'm under 50</button>
+        <button class="quiz-yn-btn yes" onclick="chooseAge('yes')">Yes, I'm 50+</button>
+        <button class="quiz-yn-btn no" onclick="chooseAge('no')">No, I'm under 50</button>
       </div>
-      <button class="style="font-size:20px;padding:18px 40px;box-shadow:0 4px 14px rgba(244,120,42,0.4)"quiz-back-btn" onclick="goToStep('step-2')"><i class="fa-solid fa-arrow-left"></i> Go back</button>
+      <button class="quiz-back-btn" onclick="goToStep('step-2')"><i class="fa-solid fa-arrow-left"></i> Go back</button>
     </div>
 
     <!-- STEP 3 → Under-50 message (still offer connection) -->
@@ -777,7 +744,7 @@
       </div>
       <!-- Falls through to the contact form below -->
       <div id="under50-form"></div>
-      <button class="style="font-size:20px;padding:18px 40px;box-shadow:0 4px 14px rgba(244,120,42,0.4)"quiz-back-btn" onclick="goToStep('step-3')" style="margin-top: 8px;"><i class="fa-solid fa-arrow-left"></i> Go back</button>
+      <button class="quiz-back-btn" onclick="goToStep('step-3')" style="margin-top: 8px;"><i class="fa-solid fa-arrow-left"></i> Go back</button>
     </div>
 
     <!-- CONTACT FORM (injected into step-form or step-under50) -->
@@ -940,3 +907,11 @@
 </script>
 </body>
 </html>
+<style>
+@media (min-width: 769px) {
+  .lp-hero-inner { text-align: center !important; max-width: 800px; margin: 0 auto; }
+  .lp-hero h1 { font-size: 52px !important; }
+  .lp-hero p { font-size: 20px !important; }
+  .lp-cta-btn { font-size: 22px !important; padding: 20px 50px !important; background: #f4782a !important; border-radius: 8px; font-weight: bold; box-shadow: 0 4px 14px rgba(0,0,0,0.3); }
+}
+</style>
