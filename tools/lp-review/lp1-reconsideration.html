@@ -630,8 +630,8 @@
 <!-- ── HERO ── -->
 <div class="lp-hero">
   <div class="lp-hero-inner" style="text-align:center;max-width:800px;margin:0 auto">
-    <h1>You Were Denied.<br>That Doesn't Mean<br>It's Over.</h1>
-    <p>For adults 50+ who've been denied SSDI, Citizens Disability has helped 70,000+ win after denial. We navigate the reconsideration process — at no cost unless you win.</p>
+    <h1 style="font-size:52px">You were denied.<br>That Doesn't Mean<br>It's Over.</h1>
+    <p style="font-size:20px">For adults 50+ who've been denied SSDI, Citizens Disability has helped 70,000+ win after denial. We navigate the reconsideration process — at no cost unless you win.</p>
     <a href="#quiz" class="lp-cta-btn">See If We Can Help →</a>
     <div class="lp-hero-tagline">Find out your options — Free case review. No obligation, no cost unless you win.</div>
   </div>
@@ -702,14 +702,14 @@
       <div class="quiz-question">What was the main reason Social Security denied you?</div>
       <div class="quiz-sub">Choose the one that best matches what your denial letter said.</div>
       <div class="quiz-btn-group">
-        <button class="quiz-option-btn" onclick="chooseDenialType('medical')">
+        <button class="style="font-size:20px;padding:18px 40px;box-shadow:0 4px 14px rgba(244,120,42,0.4)"quiz-option-btn" onclick="chooseDenialType('medical')">
           <div class="quiz-option-icon">🏥</div>
           <div class="quiz-option-text">
             <strong>My medical condition</strong>
             <span>SSA said I wasn't disabled enough or didn't have enough medical evidence</span>
           </div>
         </button>
-        <button class="quiz-option-btn" onclick="chooseDenialType('technical')">
+        <button class="style="font-size:20px;padding:18px 40px;box-shadow:0 4px 14px rgba(244,120,42,0.4)"quiz-option-btn" onclick="chooseDenialType('technical')">
           <div class="quiz-option-icon">📋</div>
           <div class="quiz-option-text">
             <strong>My work history or credits</strong>
@@ -728,7 +728,7 @@
         <p>Citizens Disability may be able to help you explore a <strong>new application</strong> based on your situation. It only takes a moment to find out.</p>
         <a href="index.html" class="lp-cta-btn" style="display: inline-block; font-size: 16px;">Let's Start Fresh →</a>
         <div style="margin-top: 16px;">
-          <button class="quiz-back-btn" onclick="goToStep('step-1')"><i class="fa-solid fa-arrow-left"></i> Go back</button>
+          <button class="style="font-size:20px;padding:18px 40px;box-shadow:0 4px 14px rgba(244,120,42,0.4)"quiz-back-btn" onclick="goToStep('step-1')"><i class="fa-solid fa-arrow-left"></i> Go back</button>
         </div>
       </div>
     </div>
@@ -743,10 +743,10 @@
       <div class="quiz-question">Are you within 60 days of receiving your denial letter?</div>
       <div class="quiz-sub">The reconsideration window typically runs 60 days from the date on your denial notice. It's okay if you're not sure — an advocate can help you check.</div>
       <div class="quiz-yn-group">
-        <button class="quiz-yn-btn yes" onclick="choose60Day('yes')">Yes</button>
-        <button class="quiz-yn-btn no" onclick="choose60Day('no')">No / Not Sure</button>
+        <button class="style="font-size:20px;padding:18px 40px;box-shadow:0 4px 14px rgba(244,120,42,0.4)"quiz-yn-btn yes" onclick="choose60Day('yes')">Yes</button>
+        <button class="style="font-size:20px;padding:18px 40px;box-shadow:0 4px 14px rgba(244,120,42,0.4)"quiz-yn-btn no" onclick="choose60Day('no')">No / Not Sure</button>
       </div>
-      <button class="quiz-back-btn" onclick="goToStep('step-1')"><i class="fa-solid fa-arrow-left"></i> Go back</button>
+      <button class="style="font-size:20px;padding:18px 40px;box-shadow:0 4px 14px rgba(244,120,42,0.4)"quiz-back-btn" onclick="goToStep('step-1')"><i class="fa-solid fa-arrow-left"></i> Go back</button>
     </div>
 
     <!-- STEP 3: Age -->
@@ -759,10 +759,10 @@
       <div class="quiz-question">Are you 50 years old or older?</div>
       <div class="quiz-sub">Age is one of the factors SSA considers — and it can work in your favor.</div>
       <div class="quiz-yn-group">
-        <button class="quiz-yn-btn yes" onclick="chooseAge('yes')">Yes, I'm 50+</button>
-        <button class="quiz-yn-btn no" onclick="chooseAge('no')">No, I'm under 50</button>
+        <button class="style="font-size:20px;padding:18px 40px;box-shadow:0 4px 14px rgba(244,120,42,0.4)"quiz-yn-btn yes" onclick="chooseAge('yes')">Yes, I'm 50+</button>
+        <button class="style="font-size:20px;padding:18px 40px;box-shadow:0 4px 14px rgba(244,120,42,0.4)"quiz-yn-btn no" onclick="chooseAge('no')">No, I'm under 50</button>
       </div>
-      <button class="quiz-back-btn" onclick="goToStep('step-2')"><i class="fa-solid fa-arrow-left"></i> Go back</button>
+      <button class="style="font-size:20px;padding:18px 40px;box-shadow:0 4px 14px rgba(244,120,42,0.4)"quiz-back-btn" onclick="goToStep('step-2')"><i class="fa-solid fa-arrow-left"></i> Go back</button>
     </div>
 
     <!-- STEP 3 → Under-50 message (still offer connection) -->
@@ -777,7 +777,7 @@
       </div>
       <!-- Falls through to the contact form below -->
       <div id="under50-form"></div>
-      <button class="quiz-back-btn" onclick="goToStep('step-3')" style="margin-top: 8px;"><i class="fa-solid fa-arrow-left"></i> Go back</button>
+      <button class="style="font-size:20px;padding:18px 40px;box-shadow:0 4px 14px rgba(244,120,42,0.4)"quiz-back-btn" onclick="goToStep('step-3')" style="margin-top: 8px;"><i class="fa-solid fa-arrow-left"></i> Go back</button>
     </div>
 
     <!-- CONTACT FORM (injected into step-form or step-under50) -->
